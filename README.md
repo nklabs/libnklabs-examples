@@ -1,6 +1,8 @@
 # libnklabs-examples
 
-Example use of libnklabs: add CLI to various STM32 and ATSAM dev. boards
+This repository holds an example application for
+[libnklabs](https://github.com/nklabs/libnklabs) that runs on various STM32
+and ATSAM development boards.
 
 # Example Application
 
