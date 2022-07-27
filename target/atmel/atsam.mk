@@ -1,10 +1,10 @@
 # libnklabs paths
 
-NK_SRC := ../../../../src
+NK_SRC := ../../../../libnklabs/src
 NK_APP := ../../../../app
-NK_INC := ../../../../inc
+NK_INC := ../../../../libnklabs/inc
 NK_APP_INC := ../../../../app_inc
-NK_CONFIG := ../../../../config
+NK_CONFIG := ../../../../libnklabs/config
 NK_ARCHCONFIG := ../../../../config_atsam
 
 # A define for the platform

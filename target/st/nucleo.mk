@@ -1,10 +1,10 @@
 # Paths
 
-NK_SRC = ../../../src
+NK_SRC = ../../../libnklabs/src
 NK_APP = ../../../app
-NK_INC = ../../../inc
+NK_INC = ../../../libnklabs/inc
 NK_APP_INC = ../../../app_inc
-NK_CONFIG = ../../../config
+NK_CONFIG = ../../../libnklabs/config
 NK_ARCHCONFIG = ../../../config_stm32
 NK_STM32PROGRAMMER = /opt/STM32CubeProgrammer
 NK_OPENOCD = /usr/local/bin/openocd
