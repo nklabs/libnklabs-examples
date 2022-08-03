@@ -98,7 +98,7 @@ static int cmd_reboot(nkinfile_t *args)
         if (nk_fscan(args, "")) {
             nk_printf("Rebooting...\n");
             nk_udelay(2000);
-            reboot();
+            nk_reboot();
         } else {
             nk_printf("Syntax error\n");
         }

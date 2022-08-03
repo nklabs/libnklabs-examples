@@ -51,9 +51,9 @@ const nk_checked_base_t ymodem_file_base =
     .area_base = 0,
     .erase_size = 256,
     .info = &m95m04,
-    .flash_read = (int (*)(const void *, uint32_t, uint8_t *, uint32_t))nk_spiflash_read, // info, address, data, byte_count
+    .flash_read = (int (*)(const void *, uint32_t, uint8_t *, size_t))nk_spiflash_read, // info, address, data, byte_count
     .flash_erase = 0,
-    .flash_write = (int (*)(const void *, uint32_t, const uint8_t *, uint32_t))nk_spiflash_write, // info, address, data, byte_count
+    .flash_write = (int (*)(const void *, uint32_t, const uint8_t *, size_t))nk_spiflash_write, // info, address, data, byte_count
     .granularity = 1
 };
 
@@ -74,7 +74,7 @@ static int ymodem_recv_file_open(const char *name)
     return nk_checked_write_open(&ymodem_file, &ymodem_file_base);
 }
 
-static void ymodem_recv_file_write(unsigned char *buffer, size_t len)
+static void ymodem_recv_file_write(const unsigned char *buffer, size_t len)
 {
     nk_checked_write(&ymodem_file, buffer, len);
 }
@@ -120,7 +120,7 @@ int cmd_ymodem(nkinfile_t *args)
         nk_yrecv(&nk_yrecv_str);
     } else if (nk_fscan(args, "send ")) { // Send a file
         static nkinfile_t ysend_file; // Important! ysend_file must stay around after cmd_ymodem returns
-        nkinfile_open_mem(&ysend_file, sdata_test, sizeof(sdata_test));
+        nkinfile_open_mem(&ysend_file, (unsigned char *)sdata_test, sizeof(sdata_test));
         nk_ysend_file(packet_buffer, &ysend_file, "foo", sizeof(sdata_test));
     } else if (nk_fscan(args, "show ")) {
         // State of previous receive

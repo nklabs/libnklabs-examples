@@ -166,9 +166,9 @@ const struct nk_dbase test_dbase =
         .area_base = 131072,
         .erase_size = 256,
         .info = &m95m04,
-        .flash_read = (int (*)(const void *, uint32_t, uint8_t *, uint32_t))nk_spiflash_read,
+        .flash_read = (int (*)(const void *, uint32_t, uint8_t *, size_t))nk_spiflash_read,
         .flash_erase = NULL,
-        .flash_write = (int (*)(const void *, uint32_t, const uint8_t *, uint32_t))nk_spiflash_write,
+        .flash_write = (int (*)(const void *, uint32_t, const uint8_t *, size_t))nk_spiflash_write,
         .granularity = 1
     },
 
@@ -177,9 +177,9 @@ const struct nk_dbase test_dbase =
         .area_base = 139264,
         .erase_size = 256,
         .info = &m95m04,
-        .flash_read = (int (*)(const void *, uint32_t, uint8_t *, uint32_t))nk_spiflash_read,
+        .flash_read = (int (*)(const void *, uint32_t, uint8_t *, size_t))nk_spiflash_read,
         .flash_erase = NULL,
-        .flash_write = (int (*)(const void *, uint32_t, const uint8_t *, uint32_t))nk_spiflash_write,
+        .flash_write = (int (*)(const void *, uint32_t, const uint8_t *, size_t))nk_spiflash_write,
         .granularity = 1
     },
 
