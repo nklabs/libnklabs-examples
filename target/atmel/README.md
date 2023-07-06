@@ -1,6 +1,6 @@
 ## Atmel ATSAMxx targets
 
-A number of "XPLAINED PRO" evaluation boards are avilable from
+A number of "XPLAINED PRO" evaluation boards are available from
 Microchip/Atmel:
 
 [https://www.microchip.com/en-us/development-tool/atsamd21-xpro](https://www.microchip.com/en-us/development-tool/atsamd21-xpro)
