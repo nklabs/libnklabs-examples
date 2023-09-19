@@ -49,8 +49,7 @@ There is on-line help:
 # Prerequisites
 
 GCC 6.3.1 for ARM, aka gcc-arm-none-eabi-6-2017-q2-update.  Get from here:
-
-[https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads/6-2017-q2-update](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads/6-2017-q2-update)
+[https://developer.arm.com/downloads/-/gnu-rm](https://developer.arm.com/downloads/-/gnu-rm)
 
 OpenOCD 0.11 or higher (for Microchip/Atmel's ATSAM parts):
 
