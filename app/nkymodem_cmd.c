@@ -76,7 +76,7 @@ static int ymodem_recv_file_open(const char *name)
 
 static void ymodem_recv_file_write(const unsigned char *buffer, size_t len)
 {
-    nk_checked_write(&ymodem_file, buffer, len);
+    nk_checked_write(&ymodem_file, 0, buffer, len);
 }
 
 static void ymodem_recv_file_close()
@@ -134,7 +134,7 @@ int cmd_ymodem(nkinfile_t *args)
         rtn = nk_checked_write_open(&ymodem_file, &ymodem_file_base);
         if (rtn)
             nk_printf("write_open = %d\n", rtn);
-        rtn = nk_checked_write(&ymodem_file, (unsigned char *)"Hello, world!\n", 14);
+        rtn = nk_checked_write(&ymodem_file, 0, (unsigned char *)"Hello, world!\n", 14);
         if (rtn)
             nk_printf("write = %d\n", rtn);
         rtn = nk_checked_write_close(&ymodem_file);
