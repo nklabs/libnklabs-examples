@@ -14,6 +14,9 @@
 # target
 ######################################
 TARGET = nucleo-g070rb
+# For OpenOCD
+FAMILYCFG = stm32g0x
+CHIPNAME = stm32g070
 
 ######################################
 # building variables
