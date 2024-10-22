@@ -454,26 +454,27 @@ int _nk_sfprintf(char *dest, size_t len, const NK_FLASH char *fmt, ...)
 
 // nkstdout set up for console with no buffering
 
-static int outc(void *ptr, unsigned char *buf, size_t len)
+static int outc(void *ptr, size_t offset, const unsigned char *buf, size_t len)
 {
 	(void)ptr;
+	(void)offset;
 	while (len--)
 		NKPRINTF_PUTC(*buf++);
 	return 0;
 }
 
-static nkoutfile_t __nkstdout =
+nkoutfile_t __nkstdout =
 {
 	.ptr = 0,
 	.start = 0,
 	.end = 0,
-	.size = 0,
+	.size = 1,
 	.block_write_ptr = 0,
 	.block_write = outc,
 	.granularity = 1
 };
 
-static nkoutfile_t __nkstdnull =
+nkoutfile_t __nkstdnull =
 {
  	.ptr = 0,
 	.start = 0,
