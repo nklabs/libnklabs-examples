@@ -114,6 +114,7 @@ $(NK_SRC)/nki2c_stm.c \
 $(NK_SRC)/nkinfile.c \
 $(NK_SRC)/nkmcuflash.c \
 $(NK_SRC)/nkoutfile.c \
+$(NK_SRC)/nk_pjson.c \
 $(NK_SRC)/nkpin.c \
 $(NK_SRC)/nkprintf.c \
 $(NK_SRC)/nkprintf_fp.c \
