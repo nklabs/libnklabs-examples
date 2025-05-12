@@ -59,6 +59,10 @@
 #include "stm32l0xx_ll_exti.h"
 #endif
 
+#if defined(STM32H755xx)
+#include "stm32h7xx_ll_exti.h"
+#endif
+
 #define BUTTON_POLL_DELAY 100 // Polling interval
 #define BUTTON_DEBOUNCE_COUNT 1 // How many intervals to leave interrupts off for debouncing
 

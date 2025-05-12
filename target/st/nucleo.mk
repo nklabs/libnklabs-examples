@@ -1,11 +1,16 @@
 # Paths
 
-NK_SRC = ../../../libnklabs/src
-NK_APP = ../../../app
-NK_INC = ../../../libnklabs/inc
-NK_APP_INC = ../../../app_inc
-NK_CONFIG = ../../../libnklabs/config
-NK_ARCHCONFIG = ../../../config_stm32
+# Top level of libnklabs-examples
+NK_TOP ?= ../../../
+# Where stlink.cfg is
+NK_MAKE ?= ../
+
+NK_SRC = $(NK_TOP)libnklabs/src
+NK_APP = $(NK_TOP)app
+NK_INC = $(NK_TOP)libnklabs/inc
+NK_APP_INC = $(NK_TOP)app_inc
+NK_CONFIG = $(NK_TOP)libnklabs/config
+NK_ARCHCONFIG = $(NK_TOP)config_stm32
 NK_STM32PROGRAMMER = /opt/STM32CubeProgrammer
 NK_OPENOCD = /usr/local/bin/openocd
 
@@ -32,6 +37,8 @@ NK_GIT_REV := \"$(shell git rev-parse HEAD)-$(shell if git diff-index --quiet HE
 
 # Our soruce files..
 C_SOURCES += \
+$(NK_APP)/fpga.c \
+$(NK_APP)/adv7393.c \
 $(NK_APP)/ads1115.c \
 $(NK_APP)/aip31068.c \
 $(NK_APP)/app_main.c \
@@ -147,11 +154,13 @@ $(BUILD_DIR)/version.o: $(OBJECTS) $(NK_APP)/VERSION_MAJOR $(NK_APP)/VERSION_MIN
 
 # Flash using STM32_Programmer
 flash:
-	$(NK_STM32PROGRAMMER)/bin/STM32_Programmer_CLI -c port=swd -e all -d build/$(TARGET).elf -v -rst
+	$(NK_STM32PROGRAMMER)/bin/STM32_Programmer_CLI -c port=swd -d build/$(TARGET).elf incremental -v -rst
+
+#	$(NK_STM32PROGRAMMER)/bin/STM32_Programmer_CLI -c port=swd -e all -d build/$(TARGET).elf -v -rst
 
 # Flash using openocd
 stlink:
-	IMAGE=build/$(TARGET).hex FAMILYCFG=$(FAMILYCFG) CHIPNAME=$(CHIPNAME) openocd --file ../stlink.cfg
+	IMAGE=build/$(TARGET).hex FAMILYCFG=$(FAMILYCFG) CHIPNAME=$(CHIPNAME) openocd --file $(NK_MAKE)stlink.cfg
 
 # Bump version numbers...
 

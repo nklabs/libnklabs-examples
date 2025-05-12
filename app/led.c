@@ -41,10 +41,16 @@ void led_blinker(void *data)
 #ifdef USER_LED
         // ATSAM
         gpio_set_pin_level(USER_LED, true);
-#endif
+#else
+#ifdef USER_LED_Pin
+        // STM32
+        HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_SET);
+#else
 #ifdef ARD_D13_Pin
         // STM32
         HAL_GPIO_WritePin(ARD_D13_GPIO_Port, ARD_D13_Pin, GPIO_PIN_SET);
+#endif
+#endif
 #endif
         led_blink = 0;
     }
@@ -53,10 +59,16 @@ void led_blinker(void *data)
 #ifdef USER_LED
         // ATSAM
         gpio_set_pin_level(USER_LED, false);
-#endif
+#else
+#ifdef USER_LED_Pin
+        // STM32
+        HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, GPIO_PIN_RESET);
+#else
 #ifdef ARD_D13_Pin
         // STM32
         HAL_GPIO_WritePin(ARD_D13_GPIO_Port, ARD_D13_Pin, GPIO_PIN_RESET);
+#endif
+#endif
 #endif
         led_blink = 1;
     }
@@ -65,7 +77,7 @@ void led_blinker(void *data)
 
 void shared_gpio_setup_for_led()
 {
-#ifdef ARD_D13_Pin
+#if !defined(USER_LED_Pin) && defined(ARD_D13_Pin)
     // On most STM32 dev. board, the ARD_SPI_CLK line is shared with USER_LED
     // Set it up for LED mode
     GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -82,7 +94,7 @@ void shared_gpio_setup_for_led()
 
 void shared_gpio_setup_for_spi()
 {
-#ifdef ARD_D13_Pin
+#if !defined(USER_LED_Pin) && defined(ARD_D13_Pin)
     // Reconfigure GPIOs for SPI
     HAL_SPI_MspInit(&ARD_SPI);
 #endif

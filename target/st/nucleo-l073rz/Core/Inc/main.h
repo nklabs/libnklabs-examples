@@ -51,6 +51,7 @@ extern "C" {
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
+void MX_TIM3_Init(void);
 
 /* USER CODE BEGIN EFP */
 
@@ -108,7 +109,7 @@ void Error_Handler(void);
 #define MAIN_I2C_SCL_GPIO_Port GPIOB
 #define MAIN_I2C_SDA_Pin GPIO_PIN_9
 #define MAIN_I2C_SDA_GPIO_Port GPIOB
-void   MX_TIM3_Init(void);
+
 /* USER CODE BEGIN Private defines */
 
 // Name the devices we use
